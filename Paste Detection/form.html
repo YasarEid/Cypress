@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form>
+        <label>
+            <p>Email</p>
+            <input type="email" onpaste=handlePaste(event) />
+        </label>
+        <label>
+            <p>Password</p>
+            <input type="password" onpaste=handlePaste(event) />
+        </label>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <p id="emailDetection"></p>
+    <p id="passwordDetection"></p>
+
+    <script>
+        function handlePaste(event) {
+            if (event.target.type === 'email') {
+                document.getElementById("emailDetection").innerHTML = "Paste is detected in email"
+            } else {
+                document.getElementById("passwordDetection").innerHTML = "Paste is detected in password"
+            }
+        }
+    </script>
+
+</body>
+
+</html>

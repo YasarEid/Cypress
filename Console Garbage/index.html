@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Hello World
+    <script>
+
+        const old = console['log'];
+        console['log'] = function () {
+            let stack = (new Error()).stack.split(/\n/);
+            if (stack[0].indexOf('Error') === 0) {
+                stack = stack.slice(1);
+            }
+            const args = [].slice.apply(arguments).concat([stack[1].trim()]);
+            return old.apply(console, args);
+        };
+
+    </script>
+    <script src="library.js"></script>
+
+</body>
+
+</html>
